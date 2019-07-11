@@ -9,5 +9,7 @@ WORKDIR ${workdir}
 COPY Gemfile* ${workdir}/
 RUN bundle install
 
+COPY . ${workdir}/
+
 EXPOSE ${rails_port}
 ENV PORT ${rails_port}
