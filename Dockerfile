@@ -1,6 +1,6 @@
 FROM ruby:2.6.3-alpine
 
-RUN apk --no-cache add build-base postgresql-dev
+RUN apk --no-cache add build-base nodejs postgresql-dev
 
 ARG workdir=/erogatio
 
