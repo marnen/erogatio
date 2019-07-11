@@ -1,3 +1,5 @@
+# TODO: This is the standard GitHub-generated Rails .gitignore file. I personally think it has a lot of unnecessary crap in it, which I should go through and remove at some point. :)
+
 *.rbc
 capybara-*.html
 .rspec
