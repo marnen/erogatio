@@ -1,5 +1,7 @@
 FROM ruby:2.6.3-alpine
 
+RUN apk --no-cache add build-base
+
 ARG workdir=/erogatio
 
 WORKDIR ${workdir}
