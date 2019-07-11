@@ -1,5 +1,5 @@
 FROM ruby:2.6.3-alpine
-RUN apk --no-cache add build-base nodejs postgresql-dev tzdata
+RUN apk --no-cache add build-base git nodejs postgresql-dev tzdata
 
 ARG workdir=/erogatio
 ARG rails_port=3000
