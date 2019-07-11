@@ -3,3 +3,6 @@ services:
   web:
     build: .
     volumes: [".:/erogatio"]
+  db:
+    image: postgres:11.4-alpine
+    volumes: [".pgdata:/var/lib/postgresql/data"]
