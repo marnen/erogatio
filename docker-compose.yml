@@ -1,8 +1,11 @@
 version: '3'
 services:
   web:
+    environment:
+      PORT: 3000
     build: .
     volumes: [".:/erogatio"]
+    ports: ["3000:3000"]
   db:
     image: postgres:11.4-alpine
     volumes: [".pgdata:/var/lib/postgresql/data"]
