@@ -49,7 +49,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
-  gem 'guard-cucumber', require: false
+  gem 'guard-compat', require: false # TODO: shouldn't really be necessary, but for some reason guard-cucumber wants it
+  gem 'guard-cucumber', github: 'todd-a-jacobs/guard-cucumber', branch: 'feature/cucumber_3.x_support', require: false # TODO: waiting for https://github.com/guard/guard-cucumber/pull/38
 end
 
 group :test do
