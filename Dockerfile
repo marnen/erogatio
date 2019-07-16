@@ -11,7 +11,6 @@ ENV BUNDLE_PATH ${bundle_path}
 COPY ${local_bundle_path} ${bundle_path}/
 RUN ls ${bundle_path}
 COPY Gemfile* ${workdir}/
-RUN bundle config
 RUN bundle install
 COPY . ${workdir}/
 RUN ls -a ${workdir}/
