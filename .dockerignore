@@ -1,0 +1,6 @@
+.dockerignore
+.envrc
+.git
+.pgdata
+Dockerfile
+*.dockerfile
