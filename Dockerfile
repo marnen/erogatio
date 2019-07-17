@@ -15,7 +15,6 @@ ENV PATH="${BUNDLE_BIN}:${PATH}"
 
 WORKDIR ${workdir}
 COPY . ${workdir}/
-RUN ls -a ${workdir}/
 
 EXPOSE ${rails_port}
 ENV PORT ${rails_port}
