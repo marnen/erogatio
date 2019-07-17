@@ -16,7 +16,6 @@ ENV PATH="${BUNDLE_BIN}:${PATH}"
 
 WORKDIR ${workdir}
 COPY . ${workdir}/
-RUN ls -a ${workdir}/
 
 COPY . ${workdir}/
 
