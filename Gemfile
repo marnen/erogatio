@@ -55,6 +55,7 @@ group :development do
   gem 'guard'
   gem 'guard-compat', require: false # TODO: shouldn't really be necessary, but for some reason guard-cucumber wants it
   gem 'guard-cucumber', github: 'todd-a-jacobs/guard-cucumber', branch: 'feature/cucumber_3.x_support', require: false # TODO: waiting for https://github.com/guard/guard-cucumber/pull/38
+  gem 'guard-rspec', require: false
 end
 
 group :test do
