@@ -1,6 +1,5 @@
 FROM ruby:2.6.3-alpine
 RUN apk --no-cache add build-base git nodejs postgresql-dev tzdata
-RUN gem install bundler
 
 ARG workdir=/erogatio
 ARG rails_port=3000
