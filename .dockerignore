@@ -1,0 +1,7 @@
+.dockerignore
+.envrc
+.git
+.pgdata
+Dockerfile
+*.dockerfile
+launch-from.sh
