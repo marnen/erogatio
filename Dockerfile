@@ -5,13 +5,15 @@ ARG workdir=/erogatio
 ARG rails_port=3000
 ARG local_bundle_path=vendor/bundle
 ARG bundle_path=${workdir}/${local_bundle_path}
-WORKDIR ${workdir}
 
-ENV BUNDLE_PATH ${bundle_path}
-COPY ${local_bundle_path} ${bundle_path}/
-RUN ls ${bundle_path}
-COPY Gemfile* ${workdir}/
-RUN bundle install
+COPY docker-entrypoint-bundler.sh /
+ENTRYPOINT ["/docker-entrypoint-bundler.sh"]
+ENV BUNDLE_PATH=/bundle
+ENV BUNDLE_BIN=/bundle/bin
+ENV GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
+
+WORKDIR ${workdir}
 COPY . ${workdir}/
 RUN ls -a ${workdir}/
 
