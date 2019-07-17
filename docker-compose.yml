@@ -7,11 +7,14 @@ services:
     environment:
       PORT: 3000
     build: .
+    command: bundle exec rails s
     depends_on: [db]
     environment:
       APP_DB_USERNAME: ${DOCKER_APP_DB_USERNAME}
       APP_DB_PASSWORD: ${DOCKER_APP_DB_PASSWORD}
-    volumes: [".:/erogatio"]
+    volumes:
+      - ".:/erogatio"
+      - "bundle:/bundle"
     ports: ["3000:3000"]
     networks: [internal]
     command: ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
@@ -27,3 +30,5 @@ services:
     volumes: [".pgdata:/var/lib/postgresql/data"]
     expose: ["5432"]
     networks: [internal]
+volumes:
+  bundle:
