@@ -42,6 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -54,6 +55,7 @@ group :development do
   gem 'guard'
   gem 'guard-compat', require: false # TODO: shouldn't really be necessary, but for some reason guard-cucumber wants it
   gem 'guard-cucumber', github: 'todd-a-jacobs/guard-cucumber', branch: 'feature/cucumber_3.x_support', require: false # TODO: waiting for https://github.com/guard/guard-cucumber/pull/38
+  gem 'guard-rspec', require: false
 end
 
 group :test do
@@ -65,6 +67,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
