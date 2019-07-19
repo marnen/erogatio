@@ -2,7 +2,7 @@ class WorkUnitsController < ApplicationController
   before_action :require_login
 
   def index
-    @work_units = WorkUnit.all # TODO: Yes, we will need to scope this to user!
+    @work_units = current_user.work_units
   end
 
   def new
