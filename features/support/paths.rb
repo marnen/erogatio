@@ -1,8 +1,8 @@
 module PathHelpers
   def path_to(page_name)
     case page_name
-    when 'nonexistent so far'
-      raise ArgumentError, 'this should never be reached'
+    when 'the home page'
+      '/'
     else
       begin
         path_helper = page_name.gsub(/\bpage$/, 'path').gsub(/^the /, '').gsub(' ', '_')
