@@ -9,7 +9,6 @@ Scenario Outline:
   And I am on the home page
   When I enter <amount> of work on <date>
   And I go to the home page
-  Then show me the page
   Then I should see <amount> of work on <date>
 
   Examples:
