@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe User, type: :model do
+  describe 'associations' do
+    it { is_expected.to have_many :work_units }
+  end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of :email }
 
@@ -39,7 +43,7 @@ describe User, type: :model do
           end
 
           it { is_expected.to validate_length_of(:password).is_at_least 0 }
-          pending 'code is correct, but specs appear not to work' do
+          context 'code is correct, but specs appear not to work', pending: true do
             it { is_expected.not_to validate_confirmation_of :password }
             it { is_expected.not_to validate_presence_of :password_confirmation }
           end
