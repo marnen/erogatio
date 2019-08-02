@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root :to => 'work_units#index'
+  resources :user_sessions
+  resources :work_units
+
+  get 'login' => 'user_sessions#new', :as => :login
+  get 'logout' => 'user_sessions#destroy', :as => :logout
 end
