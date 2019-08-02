@@ -22,3 +22,8 @@ Scenario: Can't see other users' work units
   Given another user has a work unit
   When I go to the home page
   Then I should not see any work units
+
+Scenario: Can't enter time if not logged in
+  Given I am not logged in
+  When I go to the home page
+  Then I should be on the login page

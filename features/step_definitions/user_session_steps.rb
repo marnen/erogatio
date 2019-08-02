@@ -8,3 +8,7 @@ Given 'I am logged in' do
   fill_in 'Password', with: password
   click_button 'Login'
 end
+
+Given 'I am not logged in' do
+  visit logout_path
+end
