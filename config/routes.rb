@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :work_units
 
   get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'logout' => 'user_sessions#destroy', :as => :logout
 end
