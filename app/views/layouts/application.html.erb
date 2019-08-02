@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <header>
+      <div class='current-user'>
+        <%- if current_user -%>
+          Logged in as <%= current_user.email %>
+        <%- else -%>
+          Not logged in
+        <%- end -%>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
