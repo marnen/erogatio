@@ -1,0 +1,11 @@
+= form_with model: @work_unit do |f|
+  = f.label :date
+  = f.date_select :date
+  %br/
+  = f.label :description
+  = f.text_field :description
+  %br/
+  = f.label :hours
+  = f.number_field :hours
+  %br/
+  = f.submit 'Save'
