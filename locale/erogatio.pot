@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the erogatio package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: erogatio 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-15 02:25+0000\n"
+"PO-Revision-Date: 2019-09-15 02:25+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "%{errors} prohibited this user from being saved:"
+msgstr ""
+
+msgid "1 error"
+msgid_plural "%{n} errors"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Destroy"
+msgstr ""
+
+msgid "E-mail address"
+msgstr ""
+
+msgid "E-mail address:"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Log In"
+msgstr ""
+
+msgid "Logged in as %{email}"
+msgstr ""
+
+msgid "New User"
+msgstr ""
+
+msgid "Not logged in"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password confirmation"
+msgstr ""
+
+msgid "Password confirmation:"
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Show"
+msgstr ""
