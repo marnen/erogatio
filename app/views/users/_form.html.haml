@@ -2,13 +2,13 @@
   - if user.errors.any?
     #error_explanation
       %h2
-        = pluralize(user.errors.count, "error")
-        prohibited this user from being saved:
+        - errors = n_('1 error', '%{n} errors', user.errors.count) % {n: user.errors.count}
+        = _('%{errors} prohibited this user from being saved:') % {errors: errors}
       %ul
         - user.errors.full_messages.each do |message|
           %li= message
   .field
-    = form.label :email, 'E-mail address'
+    = form.label :email, _('E-mail address')
     = form.text_field :email
   .field
     = form.label :password

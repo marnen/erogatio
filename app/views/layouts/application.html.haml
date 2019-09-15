@@ -11,7 +11,7 @@
     %header
       .current-user
         - if current_user
-          Logged in as #{current_user.email}
+          = _('Logged in as %{email}') % {email: current_user.email}
         - else
-          Not logged in
+          = _ 'Not logged in'
     = yield

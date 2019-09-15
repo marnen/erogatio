@@ -1,15 +1,15 @@
 %p#notice= notice
 
 %p
-  %strong Email:
+  %strong= _ 'E-mail address:'
   = @user.email
 %p
-  %strong Password:
+  %strong= _ 'Password:'
   = @user.password
 %p
-  %strong Password confirmation:
+  %strong= _ 'Password confirmation:'
   = @user.password_confirmation
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to _('Edit'), edit_user_path(@user)
 |
-= link_to 'Back', users_path
+= link_to _('Back'), users_path
