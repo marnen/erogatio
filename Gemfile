@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'gettext_i18n_rails'
 gem "haml-rails", "~> 2.0"
 gem 'sorcery'
 gem 'torque-postgresql' # for interval support; TODO: remove when https://github.com/rails/rails/pull/16919 is merged
@@ -54,10 +55,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'gettext', '>=3.0.2', require: false
   gem 'guard'
   gem 'guard-compat', require: false # TODO: shouldn't really be necessary, but for some reason guard-cucumber wants it
   gem 'guard-cucumber', github: 'todd-a-jacobs/guard-cucumber', branch: 'feature/cucumber_3.x_support', require: false # TODO: waiting for https://github.com/guard/guard-cucumber/pull/38
   gem 'guard-rspec', require: false
+  gem 'ruby_parser', require: false
 end
 
 group :test do
