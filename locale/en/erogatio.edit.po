@@ -1,7 +1,7 @@
 # English translations for erogatio package.
-# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright © 2019 Marnen E. Laibow-Koser.
 # This file is distributed under the same license as the erogatio package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# Marnen E. Laibow-Koser <marnen@marnen.org>, 2019.
 #
 msgid ""
 msgstr ""

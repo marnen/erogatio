@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Translatable strings for Erogatio.
+# Copyright © 2019 Marnen E. Laibow-Koser.
 # This file is distributed under the same license as the erogatio package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Marnen E. Laibow-Koser <marnen@marnen.org>, 2019.
 #
 #, fuzzy
 msgid ""
