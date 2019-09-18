@@ -27,3 +27,8 @@ Scenario: Can't enter time if not logged in
   Given I am not logged in
   When I go to the home page
   Then I should be on the login page
+
+Scenario: Link from home page to entry
+  Given I am on the home page
+  When I click "Enter work unit"
+  Then I should be on the work unit entry page
