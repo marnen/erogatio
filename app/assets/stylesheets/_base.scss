@@ -1,5 +1,6 @@
 @import 'clearfix';
 
+$default-font: verdana, arial, helvetica, sans-serif;
 $standard-padding: 1em;
 
 @mixin standard-padding() {
@@ -10,7 +11,7 @@ $standard-padding: 1em;
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: $default-font;
   font-size: 13px;
   line-height: 18px;
   margin: 0px;
