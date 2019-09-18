@@ -4,6 +4,7 @@
 
   @mixin flash-div($color) {
     border: 1px solid $color;
+    margin: 0.5em 0em;
     background-color: lighten($color, 40%)
   }
   .alert {
