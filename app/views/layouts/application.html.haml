@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Erogatio
+    %title= [_(APP_NAME), yield(:page_title)].reject(&:blank?).join ' | '
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -22,4 +22,5 @@
           .alert= flash[:alert]
         - if flash[:notice]
           .notice= flash[:notice]
+      %h1= yield :page_title
       = yield

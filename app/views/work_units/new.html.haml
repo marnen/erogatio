@@ -1,3 +1,5 @@
+- content_for(:page_title) { _ 'Enter Work Unit' }
+
 = form_with model: @work_unit do |f|
   = f.label :date
   = f.date_select :date
