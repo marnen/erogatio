@@ -1,13 +1,16 @@
 #flash {
+  $alert-color: red;
+  $notice-color: yellow;
+
   @mixin flash-div($color) {
     border: 1px solid $color;
     background-color: lighten($color, 40%)
   }
   .alert {
-    @include flash-div(red);
+    @include flash-div($alert-color);
   }
 
   .notice {
-    @include flash-div(yellow);
+    @include flash-div($notice-color);
   }
 }
