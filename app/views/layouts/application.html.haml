@@ -9,14 +9,17 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
+      .app-name= _ APP_NAME
       .current-user
         - if current_user
           = _('Logged in as %{email}') % {email: current_user.email}
         - else
           = _ 'Not logged in'
-    #flash
-      - if flash[:alert]
-        .alert= flash[:alert]
-      - if flash[:notice]
-        .notice= flash[:notice]
-    = yield
+      .clearfix
+    %main
+      #flash
+        - if flash[:alert]
+          .alert= flash[:alert]
+        - if flash[:notice]
+          .notice= flash[:notice]
+      = yield
