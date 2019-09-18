@@ -1,0 +1,11 @@
+#flash {
+  .alert {
+    border: 1px solid red;
+    background-color: lighten(red, 40%);
+  }
+
+  .notice {
+    border: 1px solid yellow;
+    background-color: lighten(yellow, 40%);
+  }
+}
