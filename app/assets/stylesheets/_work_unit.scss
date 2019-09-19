@@ -1,0 +1,21 @@
+.work-unit {
+  border-bottom: 1px solid black;
+  padding: 0.25em 0em;
+
+  &:first-child {
+    border-top: 1px solid black;
+  }
+
+  .date {
+    font-size: 125%;
+    width: 4.5em;
+    float: left;
+  }
+
+  .description {
+    font: {
+      size: 110%;
+      weight: bolder;
+    }
+  }
+}

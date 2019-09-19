@@ -8,15 +8,15 @@ Background:
   And I have no work units
 
 Scenario Outline: Basic entry
-  When I enter <amount1> of work on <date1>
-  And I enter <amount2> of work on <date2>
+  When I enter <amount1> of work for "<description1>" on <date1>
+  And I enter <amount2> of work for "<description2>" on <date2>
   And I go to the home page
-  Then I should see <amount1> of work on <date1>
-  And I should see <amount2> of work on <date2>
+  Then I should see <amount1> of work for "<description1>" on <date1>
+  And I should see <amount2> of work for "<description2>" on <date2>
 
   Examples:
- | amount1 | date1       | amount2 | date2      |
- | 3 hours | 10 Oct 2015 | 4 hours | 1 Jan 2016 |
+ | amount1 | date1       | description1 | amount2 | date2      | description2      |
+ | 3 hours | 10 Oct 2015 | Dr. Evil     | 4 hours | 1 Jan 2016 | Save the Children |
 
 Scenario: Can't see other users' work units
   Given another user has a work unit
