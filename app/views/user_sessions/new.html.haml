@@ -1,3 +1,5 @@
-%h1 Login
+- content_for(:page_title) { _ 'Log In' }
+
+%p= _("If you don't have an account yet, please %{sign_up}!").html_safe % {sign_up: link_to(_('sign up'), new_user_path).html_safe}
+
 = render 'form'
-= link_to _('Back'), user_sessions_path

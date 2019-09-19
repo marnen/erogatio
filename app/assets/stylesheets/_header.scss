@@ -1,0 +1,19 @@
+header {
+  background-color: black;
+  color: white;
+  padding: $standard-padding;
+
+  .app-name {
+    font-weight: bolder;
+    font-size: 200%;
+    float: left;
+  }
+
+  .current-user {
+    float: right;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+}

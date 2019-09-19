@@ -2,21 +2,27 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Erogatio
+    %title= [_(APP_NAME), yield(:page_title)].reject(&:blank?).join ' | '
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
+      .app-name= _ APP_NAME
       .current-user
         - if current_user
           = _('Logged in as %{email}') % {email: current_user.email}
+          |
+          = link_to _('Log out'), logout_path
         - else
           = _ 'Not logged in'
-    #flash
-      - if flash[:alert]
-        .alert= flash[:alert]
-      - if flash[:notice]
-        .notice= flash[:notice]
-    = yield
+      .clearfix
+    %main
+      #flash
+        - if flash[:alert]
+          .alert= flash[:alert]
+        - if flash[:notice]
+          .notice= flash[:notice]
+      %h1= yield :page_title
+      = yield

@@ -12,7 +12,7 @@ Scenario Outline: Basic entry
   And I enter <amount2> of work on <date2>
   And I go to the home page
   Then I should see <amount1> of work on <date1>
-  Then I should see <amount2> of work on <date2>
+  And I should see <amount2> of work on <date2>
 
   Examples:
  | amount1 | date1       | amount2 | date2      |
@@ -27,3 +27,8 @@ Scenario: Can't enter time if not logged in
   Given I am not logged in
   When I go to the home page
   Then I should be on the login page
+
+Scenario: Link from home page to entry
+  Given I am on the home page
+  When I click "Enter work unit"
+  Then I should be on the work unit entry page

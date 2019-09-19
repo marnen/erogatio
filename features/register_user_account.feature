@@ -21,3 +21,9 @@ Scenario Outline:
   Examples:
     | email              | password        |
     | joe.user@gmail.com | s3kr1t påssw0rd |
+
+Scenario: Link from login page
+  Given I am not logged in
+  And I am on the login page
+  When I click "sign up"
+  Then I should be on the new user page

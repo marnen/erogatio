@@ -3,6 +3,8 @@ module PathHelpers
     case page_name
     when 'the home page'
       '/'
+    when 'the work unit entry page'
+      new_work_unit_path
     else
       begin
         path_helper = page_name.gsub(/\bpage$/, 'path').gsub(/^the /, '').gsub(' ', '_')
