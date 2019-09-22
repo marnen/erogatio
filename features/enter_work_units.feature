@@ -8,15 +8,36 @@ Background:
   And I have no work units
 
 Scenario Outline: Basic entry
-  When I enter <amount1> of work on <date1>
-  And I enter <amount2> of work on <date2>
+  When I enter <amount1> of work for "<description1>" on <date1>
+  And I enter <amount2> of work for "<description2>" on <date2>
   And I go to the home page
-  Then I should see <amount1> of work on <date1>
-  And I should see <amount2> of work on <date2>
+  Then I should see <amount1> of work for "<description1>" on <date1>
+  And I should see <amount2> of work for "<description2>" on <date2>
 
   Examples:
- | amount1 | date1       | amount2 | date2      |
- | 3 hours | 10 Oct 2015 | 4 hours | 1 Jan 2016 |
+ | amount1 | date1       | description1 | amount2 | date2      | description2      |
+ | 3 hours | 10 Oct 2015 | Dr. Evil     | 4 hours | 1 Jan 2016 | Save the Children |
+
+Scenario Outline: Entry of all fields
+  Given I am on the work unit entry page
+  When I fill in the following:
+    | Hours          | <hours>       |
+    | Date           | <date>        |
+    | Description    | <description> |
+    | Payment amount | <pay>         |
+    | Payment due    | <due_date>    |
+  And I click "Save"
+  And I go to the home page
+  Then I should see the following work unit:
+    | Hours       | <hours>       |
+    | Date        | <date>        |
+    | Description | <description> |
+    | Pay         | <pay>         |
+    | Payment Due | <due_date>    |
+
+  Examples:
+    | hours   | date       | description | pay   | due_date    |
+    | 2 hours | 4 Jul 2019 | Fireworks   | 20.50 | 10 Jul 2019 |
 
 Scenario: Can't see other users' work units
   Given another user has a work unit

@@ -1,4 +1,6 @@
 .work-unit
-  -# TODO: We will need the description field here, but I'm waiting till I write a test for it.
   .date= work_unit.date.to_s :short_with_year
+  .description= work_unit.description
   .hours= work_unit.hours.inspect
+  .pay= number_to_currency work_unit.pay
+  .payment-due= work_unit.payment_due&.to_s :short_with_year
