@@ -11,7 +11,7 @@ class WorkUnitsController < ApplicationController
 
   def create
     params[:work_unit][:hours] = params[:work_unit][:hours].to_i.hours
-    current_user.work_units.create! params.require(:work_unit).permit(:date, :hours, :description)
+    current_user.work_units.create! params.require(:work_unit).permit WorkUnit.permitted_params
     redirect_to action: :index
   end
 end

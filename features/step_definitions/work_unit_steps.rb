@@ -16,8 +16,20 @@ end
 
 Then /^I should see (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, description, date|
   found_unit = page.all '.work-unit' do |work_unit|
-    {hours: /#{hours} hours?/, description: description, date: date}.all? {|css, content| work_unit.has_css? ".#{css}", text: content }
-    # [/#{hours} hours?/, description, date].all? {|content| work_unit.has_content? content }
+    {hours: /#{hours} hours?/, description: description, date: date}.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
+  end
+  expect(found_unit.size).to be == 1
+end
+
+Then 'I should see the following work unit:' do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  field_hash = table.rows_hash.inject({}) do |memo, pair|
+    field, content = pair
+    css_class = field.downcase.gsub ' ', '-'
+    memo.tap {|memo| memo[css_class] = content }
+  end
+  found_unit = page.all '.work-unit' do |work_unit|
+    field_hash.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
   end
   expect(found_unit.size).to be == 1
 end

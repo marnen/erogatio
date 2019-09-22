@@ -10,4 +10,10 @@
   = f.label :hours
   = f.number_field :hours
   %br/
+  = f.label :pay, _('Payment amount')
+  = f.number_field :pay, step: 0.01
+  %br/
+  = f.label :payment_due, _('Payment due')
+  = f.date_select :payment_due
+  %br/
   = f.submit _('Save')

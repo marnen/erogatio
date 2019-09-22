@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_204846) do
+ActiveRecord::Schema.define(version: 2019_09_19_185006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are the common tables managed
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_204846) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "pay", precision: 10, scale: 2
+    t.date "payment_due"
     t.index ["user_id"], name: "index_work_units_on_user_id"
   end
 
