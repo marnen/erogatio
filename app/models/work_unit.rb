@@ -7,4 +7,8 @@ class WorkUnit < ApplicationRecord
   def self.permitted_params
     content_columns.map(&:name).reject {|name| name.ends_with? '_at' }
   end
+
+  def paid?
+    !payments.empty? # TODO: adequate for right now, but will need work
+  end
 end

@@ -2,7 +2,7 @@ class WorkUnitsController < ApplicationController
   before_action :require_login
 
   def index
-    @work_units = current_user.work_units
+    @work_units = current_user.work_units.includes :payments
   end
 
   def new

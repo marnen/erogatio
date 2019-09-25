@@ -1,0 +1,10 @@
+- content_for(:page_title) { _ 'Enter Payment' }
+
+= form_with model: [@work_unit, @payment] do |f|
+  = f.label :date
+  = f.date_select :date
+  %br/
+  = f.label :amount
+  = f.number_field :amount, step: 0.01
+  %br/
+  = f.submit _('Save')

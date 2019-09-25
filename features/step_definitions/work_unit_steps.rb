@@ -2,6 +2,10 @@ Given 'I have no work units' do
   @current_user.work_units.destroy_all
 end
 
+Given 'I have the following work unit:' do |table|
+  @work_unit = FactoryBot.create :work_unit, table.rows_hash.merge(user: @current_user)
+end
+
 Given 'another user has a work unit' do
   create :work_unit
 end
