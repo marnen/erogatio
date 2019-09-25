@@ -15,7 +15,7 @@ When /^I enter (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, descripti
 end
 
 Then /^I should see (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, description, date|
-  found_unit = page.all '.work-unit' do |work_unit|
+  found_unit = page.all work_unit_selector do |work_unit|
     {hours: /#{hours} hours?/, description: description, date: date}.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
   end
   expect(found_unit.size).to be == 1
@@ -28,7 +28,7 @@ Then 'I should see the following work unit:' do |table|
     css_class = field.downcase.gsub ' ', '-'
     memo.tap {|memo| memo[css_class] = content }
   end
-  found_unit = page.all '.work-unit' do |work_unit|
+  found_unit = page.all work_unit_selector do |work_unit|
     field_hash.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
   end
   expect(found_unit.size).to be == 1
@@ -36,4 +36,10 @@ end
 
 Then 'I should not see any work units' do
   expect(page).not_to have_selector '.work-unit'
+end
+
+private
+
+def work_unit_selector
+  '.work_unit'
 end
