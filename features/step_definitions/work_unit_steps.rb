@@ -11,7 +11,7 @@ Given 'I have the following work unit:' do |table|
 end
 
 Given 'another user has a work unit' do
-  create :work_unit
+  @work_unit = create :work_unit
 end
 
 When /^I enter (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, description, date|

@@ -20,7 +20,7 @@ When 'I fill in the following:' do |table|
   end
 end
 
-When /^I go to (.*)$/ do |page_name|
+When /^I go to (.+)$/ do |page_name|
   visit path_to page_name
 end
 
@@ -30,10 +30,16 @@ When /^(.+) within (.+)$/ do |step_text, selector|
   end
 end
 
-Then /^I should be on (.*)$/ do |page_name|
+Then /^I should be on (.+)$/ do |page_name|
   expect(current_path).to be == path_to(page_name)
 end
 
 Then /^I should (not )?see "(.+)"$/ do |negation, text|
   expect(page.has_text? text).to be == !negation
+end
+
+Then /^I should not be able to get to (.+)$/ do |page_name|
+  path = path_to page_name
+  visit path
+  expect(current_path).not_to be == path
 end

@@ -27,3 +27,12 @@ Scenario: Unpaid work units don't show as paid
   Given I have a work unit
   And I am on the work units page
   Then I should not see "Paid on"
+
+Scenario: Can't enter payment when not logged in
+  Given I have a work unit
+  When I log out
+  Then I should not be able to get to the payment entry page for the work unit
+
+Scenario: Can't enter payment for others' work units
+  Given another user has a work unit
+  Then I should not be able to get to the payment entry page for the work unit
