@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @work_unit.payments.create! params.require(:payment).permit :date, :amount
+    @work_unit.payments.create! params.require(:payment).permit Payment.permitted_params
     redirect_to work_units_path
   end
 
