@@ -1,6 +1,9 @@
-.work-unit
+%div[work_unit]
   .date= work_unit.date.to_s :short_with_year
   .description= work_unit.description
   .hours= work_unit.hours.inspect
   .pay= number_to_currency work_unit.pay
   .payment-due= work_unit.payment_due&.to_s :short_with_year
+  - if work_unit.paid?
+    = _('Paid on %{date}') % {date: work_unit.payments.first.date.to_s(:short_with_year)}
+  = link_to _('Enter payment'), new_work_unit_payment_path(work_unit)

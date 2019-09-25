@@ -13,6 +13,10 @@ Given 'I am not logged in' do
   visit logout_path
 end
 
+When 'I log out' do
+  visit logout_path
+end
+
 Then 'I should be logged in as {string}' do |email|
   expect(page).to have_selector 'header .current-user', text: "Logged in as #{email}"
 end
