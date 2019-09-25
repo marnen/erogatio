@@ -34,6 +34,6 @@ Then /^I should be on (.*)$/ do |page_name|
   expect(current_path).to be == path_to(page_name)
 end
 
-Then 'I should see {string}' do |text|
-  expect(page).to have_text text
+Then /^I should (not )?see "(.+)"$/ do |negation, text|
+  expect(page.has_text? text).to be == !negation
 end

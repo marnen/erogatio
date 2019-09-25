@@ -3,9 +3,11 @@ As a user
 I can enter a payment for a work unit
 So that I know I've been paid for that work unit
 
-Scenario Outline:
+Background:
   Given I am logged in
-  And I have the following work unit:
+
+Scenario Outline: Enter and display payment for work units
+  Given I have the following work unit:
     | description | <description> |
     | pay         | <pay>         |
   When I go to the work units page
@@ -20,3 +22,8 @@ Scenario Outline:
   Examples:
     | description    | pay    | pay_date    |
     | My awesome job | 125.75 | 10 Oct 2019 |
+
+Scenario: Unpaid work units don't show as paid
+  Given I have a work unit
+  And I am on the work units page
+  Then I should not see "Paid on"
