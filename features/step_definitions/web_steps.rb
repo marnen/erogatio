@@ -40,6 +40,11 @@ end
 
 Then /^I should not be able to get to (.+)$/ do |page_name|
   path = path_to page_name
-  visit path
-  expect(current_path).not_to be == path
+  begin
+    visit path
+    expect(current_path).not_to be == path
+  rescue Pundit::NotAuthorizedError
+    # that's a type of success
+    true
+  end
 end

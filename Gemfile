@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'gettext_i18n_rails'
 gem "haml-rails", "~> 2.0"
+gem 'pundit'
 gem 'sorcery'
 gem 'torque-postgresql' # for interval support; TODO: remove when https://github.com/rails/rails/pull/16919 is merged
 gem 'nokogiri', '~> 1.10.4' # see https://nvd.nist.gov/vuln/detail/CVE-2019-5477
