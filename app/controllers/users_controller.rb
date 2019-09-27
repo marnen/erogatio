@@ -2,7 +2,7 @@ class UsersController < AuthorizedController
   login_not_required = [:new, :create]
   skip_before_action :require_login, only: login_not_required
   skip_after_action :verify_authorized, only: login_not_required
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :load_and_authorize_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -14,7 +14,6 @@ class UsersController < AuthorizedController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = authorize User.find(params[:id])
   end
 
   # GET /users/new
@@ -24,7 +23,6 @@ class UsersController < AuthorizedController
 
   # GET /users/1/edit
   def edit
-    @user = authorize User.find(params[:id])
   end
 
   # POST /users
@@ -46,7 +44,6 @@ class UsersController < AuthorizedController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user = authorize User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -69,9 +66,8 @@ class UsersController < AuthorizedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+    def load_and_authorize_user!
+      @user = authorize User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
