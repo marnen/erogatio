@@ -7,6 +7,8 @@ module PathHelpers
       new_work_unit_payment_path @work_unit
     when "the user's detail page"
       user_path @user
+    when "the user's edit page"
+      edit_user_path @user
     when 'the work unit entry page'
       new_work_unit_path
     else
