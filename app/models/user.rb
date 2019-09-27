@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 3}, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates_presence_of :password_confirmation, if: -> { new_record? || changes[:crypted_password] }
+
+  def self.permitted_params
+    %i[email password password_confirmation]
+  end
 end

@@ -1,10 +1,14 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+class UsersController < AuthorizedController
+  login_not_required = [:new, :create]
+  skip_before_action :require_login, only: login_not_required
+  skip_after_action :verify_authorized, only: login_not_required
+  before_action :load_and_authorize_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    authorize User
+    @users = policy_scope User
   end
 
   # GET /users/1
@@ -62,13 +66,12 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+    def load_and_authorize_user!
+      @user = authorize User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit User.permitted_params
     end
 end

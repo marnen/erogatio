@@ -51,4 +51,9 @@ describe User, type: :model do
       end
     end
   end
+
+  describe '.permitted_params' do
+    subject { described_class.permitted_params }
+    it { is_expected.to contain_exactly :email, :password, :password_confirmation }
+  end
 end
