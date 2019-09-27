@@ -1,15 +1,20 @@
-class UsersController < ApplicationController
+class UsersController < AuthorizedController
+  login_not_required = [:new, :create]
+  skip_before_action :require_login, only: login_not_required
+  skip_after_action :verify_authorized, only: login_not_required
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    authorize User
+    @users = policy_scope User
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = authorize User.find(params[:id])
   end
 
   # GET /users/new
