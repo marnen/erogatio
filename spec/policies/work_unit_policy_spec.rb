@@ -27,12 +27,12 @@ RSpec.describe WorkUnitPolicy, type: :policy do
   describe described_class::Scope do
     subject { described_class.new(user, WorkUnit).resolve }
 
-    it 'contains all work units that belong to the given user' do
+    it 'returns all work units that belong to the given user' do
       my_work_units = FactoryBot.create_list :work_unit, rand(2..10), user: user
       expect(subject).to contain_exactly *my_work_units
     end
 
-    it 'does not contain work units that do not belong to the given user' do
+    it 'does not return work units that do not belong to the given user' do
       others_work_units = FactoryBot.create_list :work_unit, rand(2..10)
       expect(subject).to be_empty
     end
