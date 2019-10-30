@@ -15,8 +15,8 @@ Scenario Outline: Basic entry
   And I should see <amount2> of work for "<description2>" on <date2>
 
   Examples:
- | amount1 | date1       | description1 | amount2 | date2      | description2      |
- | 3 hours | 10 Oct 2015 | Dr. Evil     | 4 hours | 1 Jan 2016 | Save the Children |
+ | amount1   | date1       | description1 | amount2   | date2      | description2      |
+ | 3.0 hours | 10 Oct 2015 | Dr. Evil     | 4.5 hours | 1 Jan 2016 | Save the Children |
 
 Scenario Outline: Entry of all fields
   Given I am on the work unit entry page
@@ -36,8 +36,8 @@ Scenario Outline: Entry of all fields
     | Payment Due | <due_date>    |
 
   Examples:
-    | hours   | date       | description | pay   | due_date    |
-    | 2 hours | 4 Jul 2019 | Fireworks   | 20.50 | 10 Jul 2019 |
+    | hours     | date       | description | pay   | due_date    |
+    | 2.0 hours | 4 Jul 2019 | Fireworks   | 20.50 | 10 Jul 2019 |
 
 Scenario: Can't see other users' work units
   Given another user has a work unit
