@@ -6,8 +6,16 @@ class WorkUnit < ApplicationRecord
 
   validates_presence_of :date, :hours, :user_id
 
+  def self.permitted_params
+    super + ['decimal_hours']
+  end
+
   def decimal_hours
     hours.to_f / 1.hour
+  end
+
+  def decimal_hours=(number)
+    self.hours = number.hours
   end
 
   def paid?
