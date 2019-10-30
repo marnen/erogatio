@@ -14,6 +14,28 @@ RSpec.describe WorkUnit, type: :model do
 
   include_examples 'permit content columns'
 
+  describe '#decimal_hours' do
+    let(:work_unit) { FactoryBot.create :work_unit, hours: hours.hours }
+
+    subject { work_unit.decimal_hours }
+
+    shared_examples 'return float' do
+      it 'returns the hours as a float' do
+        expect(subject).to eql hours.to_f
+      end
+    end
+
+    context 'integral number of hours' do
+      let(:hours) { rand(2..10) }
+      include_examples 'return float'
+    end
+
+    context 'fractional number of hours' do
+      let(:hours) { rand(200..1000) / 100.0 }
+      include_examples 'return float'
+    end
+  end
+
   describe '#paid?' do
     let(:work_unit) { FactoryBot.create :work_unit }
     subject { work_unit.paid? }
