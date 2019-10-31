@@ -13,11 +13,11 @@ RSpec.describe WorkUnit, type: :model do
   end
 
   describe '.permitted_params' do # TODO: reunify with shared_examples/permit_content_columns.rb
-    subject { described_class.permitted_params }
-
-    it 'includes all the content field names except the timestamps' do
-      expect(subject).to include *described_class.content_columns.map(&:name).reject {|name| name.ends_with? '_at' }
+    include_examples 'permit content columns' do
+      let(:match) { :include }
     end
+
+    subject { described_class.permitted_params }
 
     it { is_expected.to include 'decimal_hours' }
   end
