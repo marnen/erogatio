@@ -7,8 +7,8 @@
   = f.label :description
   = f.text_field :description
   %br/
-  = f.label :hours
-  = f.number_field :hours
+  = f.label :decimal_hours, _('Hours')
+  = f.number_field :decimal_hours
   %br/
   = f.label :pay, _('Payment amount')
   = f.number_field :pay, step: 0.01

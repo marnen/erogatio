@@ -14,7 +14,7 @@ Given 'another user has a work unit' do
   @work_unit = create :work_unit
 end
 
-When /^I enter (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, description, date|
+When 'I enter {number} hour(s) of work for {string} on {anything}' do |hours, description, date|
   visit new_work_unit_path
   select_date date, from: 'Date'
   fill_in 'Hours', with: hours
@@ -22,7 +22,7 @@ When /^I enter (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, descripti
   click_button 'Save'
 end
 
-Then /^I should see (\d+) hours? of work for "([^"]+)" on (.*)$/ do |hours, description, date|
+Then 'I should see {number} hour(s) of work for {string} on {anything}' do |hours, description, date|
   found_unit = page.all work_unit_selector do |work_unit|
     {hours: /#{hours} hours?/, description: description, date: date}.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
   end

@@ -1,7 +1,8 @@
 %div[work_unit]
   .date= work_unit.date.to_s :short_with_year
   .description= work_unit.description
-  .hours= work_unit.hours.inspect
+  - decimal_hours = work_unit.decimal_hours
+  .hours= n_('1.0 hour', '%{n} hours', decimal_hours) % {n: decimal_hours}
   .pay= number_to_currency work_unit.pay
   .payment-due= work_unit.payment_due&.to_s :short_with_year
   - if work_unit.paid?
