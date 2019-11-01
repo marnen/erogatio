@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe User, type: :model do
   describe 'associations' do
+    it { is_expected.to have_many :clients }
     it { is_expected.to have_many :work_units }
   end
 

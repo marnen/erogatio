@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :clients
   has_many :work_units
 
   validates :email, presence: true, uniqueness: true, if: -> { new_record? || changes[:crypted_password] }
