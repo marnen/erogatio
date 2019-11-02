@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_181902) do
+ActiveRecord::Schema.define(version: 2019_11_01_212651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,15 +46,15 @@ ActiveRecord::Schema.define(version: 2019_11_01_181902) do
     t.date "date", null: false
     t.string "description"
     t.interval "hours", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "pay", precision: 10, scale: 2
     t.date "payment_due"
-    t.index ["user_id"], name: "index_work_units_on_user_id"
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_work_units_on_client_id"
   end
 
   add_foreign_key "clients", "users"
   add_foreign_key "payments", "work_units"
-  add_foreign_key "work_units", "users"
+  add_foreign_key "work_units", "clients"
 end
