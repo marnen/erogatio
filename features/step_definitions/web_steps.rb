@@ -43,12 +43,7 @@ Then /^I should (not )?see the following (.+):$/ do |negation, klass, table|
 
   record_selector = ".#{klass.downcase.singularize.gsub ' ', '_'}"
   table.transpose.hashes.each do |hash|
-    field_hash = hash.inject({}) do |memo, pair|
-      # TODO: can weuse transform_keys here?
-      field, content = pair
-      field_selector = field.downcase.gsub ' ', '-'
-      memo.tap {|memo| memo[field_selector] = content }
-    end
+    field_hash = hash.transform_keys {|field| field.downcase.gsub ' ', '-' }
 
     found_unit = page.all record_selector do |work_unit|
       field_hash.all? {|field_selector, content| work_unit.has_css? ".#{field_selector}", text: content }
