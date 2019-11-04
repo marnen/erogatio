@@ -3,12 +3,7 @@ require 'rails_helper'
 describe User, type: :model do
   describe 'associations' do
     it { is_expected.to have_many :clients }
-    it 'has many work_units through clients' do
-      # TODO: can we get this working with shoulda-matchers?
-      work_units = described_class.reflect_on_association :work_units
-      expect(work_units.macro).to be == :has_many
-      expect(work_units.options[:through]).to be == :clients
-    end
+    it { is_expected.to have_many(:work_units).through :clients }
   end
 
   describe 'validations' do
