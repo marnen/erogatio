@@ -48,3 +48,9 @@ Then /^I should not be able to get to (.+)$/ do |page_name|
     true
   end
 end
+
+Then 'I should not be able to select {string} from {string}' do |value, menu|
+  within(find_field menu, type: :select) do
+    expect(page).not_to have_css 'option', text: value
+  end
+end
