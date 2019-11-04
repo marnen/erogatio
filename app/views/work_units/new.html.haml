@@ -4,6 +4,9 @@
   = f.label :date
   = f.date_select :date
   %br/
+  = f.label :client_id
+  = f.collection_select :client_id, @clients, :id, :name, prompt: true
+  %br/
   = f.label :description
   = f.text_field :description
   %br/

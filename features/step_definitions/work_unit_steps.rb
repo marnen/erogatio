@@ -18,7 +18,11 @@ When 'I enter the following work unit(s):' do |table|
   # table is a Cucumber::MultilineArgument::DataTable
   table.transpose.hashes.each do |hash|
     visit new_work_unit_path
-    select_date hash.delete('Date'), from: 'Date'
+    ['Date', 'Payment due'].each do |field|
+      date = hash.delete(field)
+      select_date date, from: field if date
+    end
+    select hash.delete('Client'), from: 'Client'
     hash.each do |field, value|
       fill_in field, with: value
     end
