@@ -16,7 +16,7 @@ end
 
 When 'I enter the following work unit(s):' do |table|
   # table is a Cucumber::MultilineArgument::DataTable
-  table.transpose.hashes.each do |hash|
+  each_column(table) do |hash|
     visit new_work_unit_path
     ['Date', 'Payment due'].each do |field|
       date = hash.delete(field)

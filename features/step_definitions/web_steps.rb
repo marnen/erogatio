@@ -42,7 +42,7 @@ Then /^I should (not )?see the following (.+):$/ do |negation, klass, table|
   # table is a Cucumber::MultilineArgument::DataTable
 
   record_selector = ".#{klass.downcase.singularize.gsub ' ', '_'}"
-  table.transpose.hashes.each do |hash|
+  each_column(table) do |hash|
     field_hash = hash.transform_keys {|field| field.downcase.gsub ' ', '-' }
 
     found_unit = page.all record_selector do |work_unit|
