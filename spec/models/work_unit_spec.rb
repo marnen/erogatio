@@ -13,7 +13,7 @@ RSpec.describe WorkUnit, type: :model do
     it { is_expected.to validate_presence_of :hours }
   end
 
-  describe '.permitted_params' do # TODO: reunify with shared_examples/permit_content_columns.rb
+  describe '.permitted_params' do
     include_examples 'permit content columns' do
       let(:match) { :include }
     end
