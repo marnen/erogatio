@@ -6,6 +6,7 @@
   %br/
   = f.label :client_id
   = f.collection_select :client_id, @clients, :id, :name, prompt: true
+  = link_to _('Enter new client'), new_client_path
   %br/
   = f.label :description
   = f.text_field :description

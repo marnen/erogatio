@@ -31,7 +31,12 @@ Scenario Outline: Can't see others' clients
     | name                   |
     | Someone Else's Problem |
 
-Scenario: Link from client index
-  Given I am on the clients page
+Scenario Outline: Links from other pages
+  Given I am on <page>
   When I click "Enter new client"
   Then I should be on the client entry page
+
+  Examples:
+    | page                     |
+    | the clients page         |
+    | the work unit entry page |
