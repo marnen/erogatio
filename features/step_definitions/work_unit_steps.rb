@@ -30,29 +30,6 @@ When 'I enter the following work unit(s):' do |table|
   end
 end
 
-Then 'I should see the following work unit(s):' do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  table.transpose.hashes.each do |hash|
-    field_hash = hash.inject({}) do |memo, pair|
-      field, content = pair
-      css_class = field.downcase.gsub ' ', '-'
-      memo.tap {|memo| memo[css_class] = content }
-    end
-
-    found_unit = page.all work_unit_selector do |work_unit|
-      field_hash.all? {|css_class, content| work_unit.has_css? ".#{css_class}", text: content }
-    end
-    expect(found_unit.size).to be == 1
-  end
-  # TODO: can we refactor this to a table diff?
-end
-
 Then 'I should not see any work units' do
   expect(page).not_to have_selector '.work-unit'
-end
-
-private
-
-def work_unit_selector
-  '.work_unit'
 end
