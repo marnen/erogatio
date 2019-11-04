@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.describe WorkUnit, type: :model do
   describe 'associations' do
-    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :client }
+    it { is_expected.to have_one(:user).through(:client) }
     it { is_expected.to have_many :payments }
   end
 
   describe 'validations' do
+    it { is_expected.to validate_presence_of :client_id }
     it { is_expected.to validate_presence_of :date }
     it { is_expected.to validate_presence_of :hours }
-    it { is_expected.to validate_presence_of :user_id }
   end
 
-  describe '.permitted_params' do # TODO: reunify with shared_examples/permit_content_columns.rb
+  describe '.permitted_params' do
     include_examples 'permit content columns' do
       let(:match) { :include }
     end

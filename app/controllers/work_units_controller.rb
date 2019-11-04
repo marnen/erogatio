@@ -6,12 +6,14 @@ class WorkUnitsController < AuthorizedController
   def new
     skip_authorization
     @work_unit = WorkUnit.new
+    @clients = policy_scope(Client).order(:name)
   end
 
   def create
-    skip_authorization
     params[:work_unit][:decimal_hours] = params[:work_unit][:decimal_hours].to_f
-    current_user.work_units.create! params.require(:work_unit).permit WorkUnit.permitted_params
+    client = Client.find params[:work_unit][:client_id]
+    authorize client, :create_work_unit?
+    client.work_units.create! params.require(:work_unit).permit WorkUnit.permitted_params
     redirect_to action: :index
   end
 end

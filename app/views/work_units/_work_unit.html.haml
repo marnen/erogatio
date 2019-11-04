@@ -1,5 +1,6 @@
 %div[work_unit]
   .date= work_unit.date.to_s :short_with_year
+  .client= _('Client: %{name}') % {name: work_unit.client.name}
   .description= work_unit.description
   - decimal_hours = work_unit.decimal_hours
   .hours= n_('1.0 hour', '%{n} hours', decimal_hours) % {n: decimal_hours}

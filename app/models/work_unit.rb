@@ -1,10 +1,11 @@
 class WorkUnit < ApplicationRecord
   include PermitContentColumns
 
-  belongs_to :user
+  belongs_to :client
+  has_one :user, through: :client
   has_many :payments
 
-  validates_presence_of :date, :hours, :user_id
+  validates_presence_of :client_id, :date, :hours
 
   def self.permitted_params
     super + ['decimal_hours']

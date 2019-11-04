@@ -1,11 +1,11 @@
 require 'rails_helper'
 require 'pundit/rspec'
 
-RSpec.describe WorkUnitPolicy, type: :policy do
+RSpec.describe ClientPolicy, type: :policy do
 
   include_examples 'inherit from ApplicationPolicy'
 
-  permissions :update?, :edit? do
+  permissions :create_work_unit? do
     include_examples "allow access to given user's records only"
   end
 

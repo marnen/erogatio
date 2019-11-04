@@ -1,11 +1,11 @@
 class WorkUnitPolicy < ApplicationPolicy
   def update?
-    record.user == user
+    record.client.user_id == user.id
   end
 
   class Scope < Scope
     def resolve
-      scope.where user: user
+      scope.joins(:client).where Client.table_name => {user: user} # TODO: can we clean this up a bit with Squeel? Or as a named scope?
     end
   end
 end
