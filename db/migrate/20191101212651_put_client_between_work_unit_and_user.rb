@@ -30,13 +30,14 @@ class PutClientBetweenWorkUnitAndUser < ActiveRecord::Migration[5.2]
 
   def convert_user_to_client!(work_unit)
     user = User.find work_unit.user_id # can't rely on associations while migrating the same class
-    client = user.clients.order(:created_at).first || user.create_client!(name: 'Unknown Client')
+    client = user.clients.order(:created_at).first || user.clients.create!(name: 'Unknown Client')
     work_unit.update_attributes! client_id: client.id
     say_conversion work_unit, from: user, to: client
   end
 
   def convert_client_to_user!(work_unit)
     client = Client.find work_unit.client_id
+    user = client.user
     work_unit.update_attributes! user_id: client.user_id
     say_conversion work_unit, from: client, to: user
   end
