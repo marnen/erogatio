@@ -1,7 +1,6 @@
 class ClientsController < AuthorizedController
   def index
-    skip_policy_scope # TODO: yes, I know we'll need scoping!
-    @clients = Client.all
+    @clients = policy_scope Client
   end
 
   def new
