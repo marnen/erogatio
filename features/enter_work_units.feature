@@ -49,6 +49,17 @@ Scenario Outline: Entry of all fields
     | client  | hours     | date       | description | pay   | due_date    |
     | Initech | 2.0 hours | 4 Jul 2019 | Fireworks   | 20.50 | 10 Jul 2019 |
 
+Scenario Outline: Can't enter work units for other users' clients
+  Given another user has the following client:
+    | name | <client> |
+  When I go to the work unit entry page
+
+  Then I should not be able to select "<client>" from "Client"
+
+  Examples:
+    | client  |
+    | BigCorp |
+
 Scenario: Can't see other users' work units
   Given another user has a work unit
   When I go to the home page

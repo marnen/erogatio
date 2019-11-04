@@ -1,4 +1,5 @@
-Given 'I have the following client(s):' do |table|
+Given /^(I|another user) (?:have|has) the following clients?:$/ do |user, table|
   # table is a Cucumber::MultilineArgument::DataTable
-  table.transpose.hashes.each {|hash| FactoryBot.create :client, hash.merge(user: @current_user) } # TODO: go through the UI once it exists
+  options = user == 'I' ? {user: @current_user} : {}
+  table.transpose.hashes.each {|hash| FactoryBot.create :client, hash.merge(options) }
 end
