@@ -1,4 +1,4 @@
 - content_for(:page_title) { _ 'Clients' }
 
--# TODO: add entry link
+= link_to _('Enter new client'), new_client_path
 .clients= render @clients

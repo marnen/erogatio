@@ -3,9 +3,11 @@ As a user
 I can create clients
 So that I can record whom I did work for
 
-Scenario Outline: Basic client entry
+Background:
   Given I am logged in
-  And I have no clients
+
+Scenario Outline: Basic client entry
+  Given I have no clients
   When I go to the client entry page
   And I fill in the following:
     | Name | <name> |
@@ -19,8 +21,7 @@ Scenario Outline: Basic client entry
     | Acme Contraptions |
 
 Scenario Outline: Can't see others' clients
-  Given I am logged in
-  And another user has the following client:
+  Given another user has the following client:
     | name | <name> |
   When I go to the clients page
   Then I should not see the following client:
@@ -29,3 +30,8 @@ Scenario Outline: Can't see others' clients
   Examples:
     | name                   |
     | Someone Else's Problem |
+
+Scenario: Link from client index
+  Given I am on the clients page
+  When I click "Enter new client"
+  Then I should be on the client entry page
