@@ -1,6 +1,6 @@
 class WorkUnitPolicy < ApplicationPolicy
   def update?
-    record.user == user
+    record.user == user # TODO: use IDs so we don't have to fetch the whole record
   end
 
   class Scope < Scope
