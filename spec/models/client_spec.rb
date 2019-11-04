@@ -10,4 +10,8 @@ RSpec.describe Client, type: :model do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :user_id }
   end
+
+  describe '.permitted_params' do
+    include_examples 'permit content columns'
+  end
 end

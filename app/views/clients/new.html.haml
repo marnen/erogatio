@@ -1,0 +1,7 @@
+- content_for(:page_title) { _ 'Enter Client' }
+
+= form_with model: @client do |f|
+  = f.label :name
+  = f.text_field :name
+  %br/
+  = f.submit _('Save')

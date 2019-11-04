@@ -3,6 +3,8 @@ module PathHelpers
     case page_name
     when 'the home page'
       '/'
+    when 'the client entry page'
+      new_client_path
     when 'the payment entry page for the work unit'
       new_work_unit_payment_path @work_unit
     when "the user's detail page"

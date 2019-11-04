@@ -38,6 +38,21 @@ Then /^I should (not )?see "(.+)"$/ do |negation, text|
   expect(page.has_text? text).to be == !negation
 end
 
+Then /^I should (not )?see the following (.+):$/ do |negation, klass, table|
+  # table is a Cucumber::MultilineArgument::DataTable
+
+  record_selector = ".#{klass.downcase.singularize.gsub ' ', '_'}"
+  each_column(table) do |hash|
+    field_hash = hash.transform_keys {|field| field.downcase.gsub ' ', '-' }
+
+    found_unit = page.all record_selector do |work_unit|
+      field_hash.all? {|field_selector, content| work_unit.has_css? ".#{field_selector}", text: content }
+    end
+    expect(found_unit.size).to be == (negation ? 0 : 1)
+  end
+  # TODO: can we refactor this to a table diff?
+end
+
 Then /^I should not be able to get to (.+)$/ do |page_name|
   path = path_to page_name
   begin
