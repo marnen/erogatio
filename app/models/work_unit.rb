@@ -16,7 +16,7 @@ class WorkUnit < ApplicationRecord
   end
 
   def decimal_hours=(number)
-    self.hours = number.hours
+    self.hours = (number.kind_of?(Numeric) ? number : number.to_f).hours
   end
 
   def paid?

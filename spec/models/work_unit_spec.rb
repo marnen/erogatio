@@ -61,6 +61,14 @@ RSpec.describe WorkUnit, type: :model do
         it 'sets hours to the given number' do
           expect(work_unit.hours).to eql hours.hours
         end
+
+        context 'hours is a string' do
+          let(:hours) { super().to_s }
+
+          it 'sets hours to the given number, converted to a duration' do
+            expect(work_unit.hours).to be == hours.to_f.hours
+          end
+        end
       end
 
       context 'integral number of hours' do
