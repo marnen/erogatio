@@ -3,7 +3,8 @@ language: ruby
 services:
   - docker
 
-install: ~
+install:
+  - echo 'No install needed; Docker will take care of this.'
 
 before_script:
   - docker-compose up
