@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :work_unit do
-    transient { user { nil } }
+    transient { user { nil } } # TODO: consider getting rid of this
 
     date { Faker::Date.backward 365 }
     description { Faker::Lorem.sentence }
