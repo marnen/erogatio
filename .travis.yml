@@ -10,6 +10,7 @@ install:
   - /bin/true
 
 before_script:
+  - mkdir .pgdata
   - docker-compose up --build -d
   - docker-compose exec web bundle install
   - docker-compose exec -e RAILS_ENV=test web bundle exec rake db:create db:test:prepare
