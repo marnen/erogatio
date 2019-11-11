@@ -3,6 +3,8 @@ language: ruby
 services:
   - docker
 
+install: ~
+
 before_script:
   - docker-compose up
 
