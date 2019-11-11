@@ -8,15 +8,17 @@ end
 
 When 'I fill in the following:' do |table|
   table.rows_hash.each do |field, value|
-    begin
-      fill_in field, with: value
-    rescue Capybara::ElementNotFound => not_found
+    [
+      proc { fill_in field, with: value },
+      proc { select value, from: field },
+      proc { select_date value, from: field }
+    ].any? do |block|
       begin
-        select_date value, from: field
-      rescue ArgumentError
-        raise not_found
+        block.call
+      rescue Capybara::ElementNotFound => not_found
+        false
       end
-    end
+    end || raise(not_found)
   end
 end
 
@@ -43,7 +45,10 @@ Then /^I should (not )?see the following (.+):$/ do |negation, klass, table|
 
   record_selector = ".#{klass.downcase.singularize.gsub ' ', '_'}"
   each_column(table) do |hash|
-    field_hash = hash.transform_keys {|field| field.downcase.gsub ' ', '-' }
+    field_hash = hash.transform_keys do |field|
+      result = field.downcase.gsub ' ', '-'
+      result == 'payment-amount' ? 'pay' : result
+    end
 
     found_unit = page.all record_selector do |work_unit|
       field_hash.all? {|field_selector, content| work_unit.has_css? ".#{field_selector}", text: content }

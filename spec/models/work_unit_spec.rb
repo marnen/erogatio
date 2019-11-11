@@ -20,6 +20,7 @@ RSpec.describe WorkUnit, type: :model do
 
     subject { described_class.permitted_params }
 
+    it { is_expected.to include 'client_id' }
     it { is_expected.to include 'decimal_hours' }
   end
 
