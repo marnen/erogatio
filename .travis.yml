@@ -1,8 +1,13 @@
+language: ~
+
 services:
   - docker
 
 env:
   - DOCKER_APP_DB_USERNAME=erogatio DOCKER_APP_DB_PASSWORD=password DOCKER_POSTGRES_PASSWORD=sekrit
+
+install:
+  - /bin/true
 
 before_script:
   - docker-compose up
