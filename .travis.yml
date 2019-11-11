@@ -10,7 +10,7 @@ install:
   - /bin/true
 
 before_script:
-  - docker-compose up -d
+  - docker-compose up --build -d
 
 script:
   - docker-compose run web bundle exec rspec
