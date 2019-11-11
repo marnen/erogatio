@@ -10,7 +10,7 @@ install:
   - /bin/true
 
 before_script:
-  - docker-compose up
+  - docker-compose up -d
   - export COMMAND_PREFIX='docker-compose exec web'
 
 script:
