@@ -1,6 +1,6 @@
 class WorkUnitPolicy < ApplicationPolicy
   def update?
-    record.client.user_id == user.id
+    record.client.user_id == user.id && !record.paid?
   end
 
   class Scope < Scope

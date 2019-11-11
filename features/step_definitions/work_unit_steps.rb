@@ -2,12 +2,14 @@ Given 'I have no work units' do
   @current_user.work_units.destroy_all
 end
 
-Given 'I have a work unit' do
-  @work_unit = FactoryBot.create :work_unit, user: @current_user
+Given /^I have a (paid )?work unit$/ do |paid|
+  @work_unit = FactoryBot.create :work_unit, user: @current_user, paid: !!paid
 end
 
 Given 'I have the following work unit:' do |table|
-  @work_unit = FactoryBot.create :work_unit, table.rows_hash.merge(user: @current_user)
+  fields = table.rows_hash.transform_keys {|key| key.gsub ' ', '_' }
+  fields['client'] &&= (@current_user.clients.find_by_name(fields['client']) || raise(ActiveRecord::RecordNotFound)) # TODO: can we use a Cucumber transform for this?
+  @work_unit = FactoryBot.create :work_unit, fields.merge('user' => @current_user)
 end
 
 Given 'another user has a work unit' do
