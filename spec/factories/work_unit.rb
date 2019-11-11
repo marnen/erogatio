@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :work_unit do
-    transient do
-      user { nil } # TODO: consider getting rid of this
-      paid { false }
-    end
+    transient { paid { false } }
 
     date { Faker::Date.backward 365 }
     description { Faker::Lorem.sentence }
@@ -13,9 +10,6 @@ FactoryBot.define do
     client
 
     after(:create) do |work_unit, evaluator|
-      user = evaluator.user
-      work_unit.update_attributes!(client: create(:client, user: user)) if user && (work_unit.user != user)
-
       if evaluator.paid
         FactoryBot.create :payment, work_unit: work_unit, amount: work_unit.pay
       end
