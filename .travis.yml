@@ -1,0 +1,11 @@
+language: ruby
+
+services:
+  - docker
+
+before_script:
+  - docker-compose up
+
+script:
+  - docker exec erogatio_web_1 bundle exec rspec
+  - docker exec erogatio_web_1 bundle exec cucumber
