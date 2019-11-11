@@ -20,6 +20,7 @@ RSpec.describe WorkUnit, type: :model do
 
     subject { described_class.permitted_params }
 
+    it { is_expected.to include 'client_id' }
     it { is_expected.to include 'decimal_hours' }
   end
 
@@ -60,6 +61,14 @@ RSpec.describe WorkUnit, type: :model do
       shared_examples 'set hours' do
         it 'sets hours to the given number' do
           expect(work_unit.hours).to eql hours.hours
+        end
+
+        context 'hours is a string' do
+          let(:hours) { super().to_s }
+
+          it 'sets hours to the given number, converted to a duration' do
+            expect(work_unit.hours).to be == hours.to_f.hours
+          end
         end
       end
 

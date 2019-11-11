@@ -8,7 +8,7 @@ class WorkUnit < ApplicationRecord
   validates_presence_of :client_id, :date, :hours
 
   def self.permitted_params
-    super + ['decimal_hours']
+    super + ['client_id', 'decimal_hours']
   end
 
   def decimal_hours
@@ -16,7 +16,7 @@ class WorkUnit < ApplicationRecord
   end
 
   def decimal_hours=(number)
-    self.hours = number.hours
+    self.hours = (number.kind_of?(Numeric) ? number : number.to_f).hours
   end
 
   def paid?

@@ -1,0 +1,21 @@
+= form_with model: work_unit do |f|
+  = f.label :date
+  = f.date_select :date
+  %br/
+  = f.label :client_id
+  = f.collection_select :client_id, clients, :id, :name, prompt: true
+  = link_to _('Enter new client'), new_client_path
+  %br/
+  = f.label :description
+  = f.text_field :description
+  %br/
+  = f.label :decimal_hours, _('Hours')
+  = f.number_field :decimal_hours
+  %br/
+  = f.label :pay, _('Payment amount')
+  = f.number_field :pay, step: 0.01
+  %br/
+  = f.label :payment_due, _('Payment due')
+  = f.date_select :payment_due
+  %br/
+  = f.submit _('Save')
