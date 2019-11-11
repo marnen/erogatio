@@ -10,7 +10,8 @@ FactoryBot.define do
     client
 
     after(:create) do |work_unit, evaluator|
-      work_unit.update_attributes!(client: create(:client, user: evaluator.user)) if evaluator.user
+      user = evaluator.user
+      work_unit.update_attributes!(client: create(:client, user: user)) if user && (work_unit.user != user)
     end
   end
 end
