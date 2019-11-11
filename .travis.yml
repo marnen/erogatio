@@ -13,5 +13,5 @@ before_script:
   - docker-compose up -d
 
 script:
-  - docker-compose exec web bundle exec rspec
-  - docker-compose exec web bundle exec cucumber
+  - docker exec erogatio_web_1 bundle exec rspec
+  - docker exec erogatio_web_1 bundle exec cucumber
