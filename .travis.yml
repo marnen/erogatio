@@ -3,6 +3,11 @@ language: ruby
 services:
   - docker
 
+env:
+  - DOCKER_APP_DB_USERNAME=erogatio
+  - DOCKER_APP_DB_PASSWORD=password
+  - DOCKER_POSTGRES_PASSWORD=sekrit
+
 install:
   - echo 'No install needed; Docker will take care of this.'
 
