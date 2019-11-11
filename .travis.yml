@@ -11,8 +11,7 @@ install:
 
 before_script:
   - docker-compose up -d
-  - export COMMAND_PREFIX='docker-compose exec web'
 
 script:
-  - ${COMMAND_PREFIX} bundle exec rspec
-  - ${COMMAND_PREFIX} bundle exec cucumber
+  - docker-compose exec web bundle exec rspec
+  - docker-compose exec web bundle exec cucumber
