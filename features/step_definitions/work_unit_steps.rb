@@ -2,8 +2,8 @@ Given 'I have no work units' do
   @current_user.work_units.destroy_all
 end
 
-Given 'I have a work unit' do
-  @work_unit = FactoryBot.create :work_unit, user: @current_user
+Given /^I have a (paid )?work unit$/ do |paid|
+  @work_unit = FactoryBot.create :work_unit, user: @current_user, paid: !!paid
 end
 
 Given 'I have the following work unit:' do |table|

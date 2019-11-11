@@ -9,4 +9,5 @@
   - if work_unit.paid?
     = _('Paid on %{date}') % {date: work_unit.payments.first.date.to_s(:short_with_year)}
   = link_to _('Enter payment'), new_work_unit_payment_path(work_unit)
-  = link_to _('Edit'), edit_work_unit_path(work_unit)
+  - unless work_unit.paid? # TODO: use authorization instead
+    = link_to _('Edit'), edit_work_unit_path(work_unit)

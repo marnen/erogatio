@@ -12,6 +12,12 @@ Scenario: Link from view to edit
   When I click "Edit" within the work unit
   Then I should be on the work unit's edit page
 
+Scenario: Can't edit paid work unit
+  Given I have a paid work unit
+  And I am on the home page
+  Then I should not see "Edit" within the work unit
+  And I should not be able to get to the work unit's edit page
+
 Scenario: Can't edit other users' work units
   Given another user has a work unit
   Then I should not be able to get to the work unit's edit page

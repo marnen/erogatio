@@ -7,6 +7,13 @@ RSpec.describe WorkUnitPolicy, type: :policy do
 
   permissions :update?, :edit? do
     include_examples "allow access to given user's records only"
+
+    context 'paid work unit' do
+      let(:user) { FactoryBot.create :user }
+      it 'does not permit access' do
+        expect(described_class).not_to permit user,  FactoryBot.create(:work_unit, user: user, paid: true)
+      end
+    end
   end
 
   describe described_class::Scope do
