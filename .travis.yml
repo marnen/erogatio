@@ -1,4 +1,4 @@
-language: ~
+language: generic # see https://medium.com/@desfocado/how-to-get-travis-to-work-with-no-build-language-9f4c03ed68b1
 
 services:
   - docker
