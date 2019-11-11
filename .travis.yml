@@ -11,7 +11,8 @@ install:
 
 before_script:
   - docker-compose up --build -d
+  - docker-compose exec web bundle install
 
 script:
-  - docker-compose run --no-deps web bundle exec rspec
-  - docker-compose run --no-deps web bundle exec cucumber
+  - docker-compose exec web bundle exec rspec
+  - docker-compose exec web bundle exec cucumber
