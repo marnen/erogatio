@@ -12,7 +12,7 @@ install:
 before_script:
   - docker-compose up --build -d
   - docker-compose exec web bundle install
-  - docker-compose exec web -e RAILS_ENV=test rake db:create db:test:prepare
+  - docker-compose exec -e RAILS_ENV=test web bundle exec rake db:create db:test:prepare
 
 script:
   - docker-compose exec web bundle exec rspec
