@@ -13,5 +13,5 @@ before_script:
   - docker-compose up --build -d
 
 script:
-  - docker-compose run web bundle exec rspec
-  - docker-compose run web bundle exec cucumber
+  - docker-compose run --no-deps web bundle exec rspec
+  - docker-compose run --no-deps web bundle exec cucumber
