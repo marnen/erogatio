@@ -17,7 +17,7 @@ install:
   - /bin/true
 
 before_script:
-  - mkdir .pgdata
+  - mkdir -p .bundle .pgdata
   - docker-compose up --build -d
   - docker-compose exec web bundle install
   - docker-compose exec -e RAILS_ENV=test -e DISABLE_BOOTSNAP=true web bundle exec rake db:create db:test:prepare
