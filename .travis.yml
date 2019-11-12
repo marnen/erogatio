@@ -3,8 +3,15 @@ language: generic # see https://medium.com/@desfocado/how-to-get-travis-to-work-
 services:
   - docker
 
+cache:
+  directories:
+    - .bundle
+
 env:
-  - DOCKER_APP_DB_USERNAME=erogatio DOCKER_APP_DB_PASSWORD=password DOCKER_POSTGRES_PASSWORD=sekrit
+  matrix:
+    - DOCKER_APP_DB_USERNAME=erogatio DOCKER_APP_DB_PASSWORD=password DOCKER_POSTGRES_PASSWORD=sekrit
+  global:
+    - COMPOSE_FILE=docker-compose.yml:docker-compose.travis.yml
 
 install:
   - /bin/true

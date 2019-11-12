@@ -1,4 +1,5 @@
 .dockerignore
+.bundle
 .envrc
 .git
 .pgdata
