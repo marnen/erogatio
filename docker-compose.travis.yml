@@ -3,5 +3,5 @@ volumes:
   bundle:
     driver: local
     driver_opts:
-      device: .bundle
+      device: "${PWD}/.bundle"
       o: bind
