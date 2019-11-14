@@ -3,6 +3,8 @@
 .envrc
 .git
 .pgdata
+.travis/yml
 Dockerfile
 *.dockerfile
 launch-from
+travis
