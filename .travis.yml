@@ -1,0 +1,28 @@
+language: generic # see https://medium.com/@desfocado/how-to-get-travis-to-work-with-no-build-language-9f4c03ed68b1
+
+services:
+  - docker
+
+cache:
+  directories:
+    - .bundle
+
+env:
+  global:
+    - DOCKER_APP_DB_USERNAME=erogatio
+    - DOCKER_APP_DB_PASSWORD=password
+    - DOCKER_POSTGRES_PASSWORD=sekrit
+    - COMPOSE_FILE=docker-compose.yml:travis/docker-compose.override.yml
+
+install:
+  - /bin/true
+
+before_script:
+  - mkdir -p .bundle .pgdata
+  - docker-compose up --build -d
+  - docker-compose exec web bundle install
+  - docker-compose exec -e RAILS_ENV=test -e DISABLE_BOOTSNAP=true web bundle exec rake db:create db:test:prepare
+
+script:
+  - docker-compose exec web bundle exec rspec
+  - docker-compose exec web bundle exec cucumber

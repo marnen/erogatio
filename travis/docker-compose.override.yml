@@ -1,0 +1,7 @@
+version: '3'
+volumes:
+  bundle:
+    driver: local
+    driver_opts:
+      device: "${PWD}/.bundle"
+      o: bind

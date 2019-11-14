@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/marnen/erogatio.svg?branch=master)](https://travis-ci.com/marnen/erogatio)
+
 # erogatio
 Track receiving payment for ongoing jobs.
 
