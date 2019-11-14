@@ -8,9 +8,10 @@ cache:
     - .bundle
 
 env:
-  matrix:
-    - DOCKER_APP_DB_USERNAME=erogatio DOCKER_APP_DB_PASSWORD=password DOCKER_POSTGRES_PASSWORD=sekrit
   global:
+    - DOCKER_APP_DB_USERNAME=erogatio
+    - DOCKER_APP_DB_PASSWORD=password
+    - DOCKER_POSTGRES_PASSWORD=sekrit
     - COMPOSE_FILE=docker-compose.yml:docker-compose.travis.yml
 
 install:
